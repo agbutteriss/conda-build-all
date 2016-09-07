@@ -39,13 +39,11 @@ class Test_resolve_dependencies(unittest.TestCase):
         deps = resolve_dependencies({'a':['b'], 'b':['c'], 'c':['a']}, {'c'})
         self.assertEqual(list(deps), ['b', 'a', 'c'])
 
-    # At present I don't know how to guarantee order where it doesn't 'matter'
-    '''
+
     def test_resolvable_circular_ab(self):
         deps = resolve_dependencies({'a': ['b'], 'b': ['a']},
                                     existing_packages={'a', 'b'})
         self.assertEqual(list(deps), ['a', 'b'])
-    '''
 
     def test_missing_link(self):
         deps = resolve_dependencies({'a': ['b'], 'c': ['d']})
